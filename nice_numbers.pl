@@ -31,7 +31,7 @@ goal_expansion_loop(T0, T) :-
         T =.. [Functor|Args]
     ).
 
-% expand n/{2,...} macros
+% expand n/{2,3,4} macros
 user:goal_expansion(T0, T) :-
     nice_numbers:goal_expansion_loop(T0, T).
 
