@@ -13,3 +13,9 @@ fib(N, FibN) :-
     fib(n(N-1), N1),
     fib(n(N-2), N2),
     FibN is N1 + N2.
+
+factorial(1, 1) :- !.
+factorial(N, Nfac) :-
+    N > 0,
+    factorial(n(N-1), N1),
+    Nfac is N*N1.
