@@ -2,15 +2,10 @@
 :- use_module(library(apply), [maplist/3]).
 
 expand_n(n(Thousands, Ones), X) :-
-    integer(Thousands),
-    integer(Ones),
-    X is 1000*Thousands + Ones.
+    expand_n(n(0, 0, Thousands, Ones), X).
 
 expand_n(n(Millions, Thousands, Ones), X) :-
-    integer(Millions),
-    integer(Thousands),
-    integer(Ones),
-    X is 1000000*Millions + 1000*Thousands + Ones.
+    expand_n(n(0, Millions, Thousands, Ones), X).
 
 expand_n(n(Billions, Millions, Thousands, Ones), X) :-
     integer(Billions),
