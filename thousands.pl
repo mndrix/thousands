@@ -1,4 +1,4 @@
-:- module(nice_numbers, []).
+:- module(thousands, []).
 :- use_module(library(apply), [maplist/3]).
 
 expand_n(n(Thousands, Ones), X) :-
@@ -33,25 +33,4 @@ goal_expansion_loop(T0, T) :-
 
 % expand n/{2,3,4} macros
 user:goal_expansion(T0, T) :-
-    nice_numbers:goal_expansion_loop(T0, T).
-
-
-goal_expansion_math(_, T, T) :-
-    var(T),
-    !.
-goal_expansion_math(T is Expression, n(Expression), T) :- !.
-goal_expansion_math(Math, T0, T) :-
-    T0 =.. [Functor|Args0],
-    (   Args0=[] -> T=T0
-    ;   maplist(goal_expansion_math(Math), Args0, Args),
-        T =.. [Functor|Args]
-    ).
-
-
-% expand n/1 arithmetic macros
-user:goal_expansion(T0, (Math,T)) :-
-    %format('GOAL: ~w~n', [T0]),
-    \+ (_,_) = T0,  % skip conjunction of smaller goals
-    \+ (_;_) = T0,  % skip disjunctions of smaller goals
-    nice_numbers:goal_expansion_math(Math, T0, T),
-    nonvar(Math).
+    thousands:goal_expansion_loop(T0, T).
