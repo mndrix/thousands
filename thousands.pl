@@ -28,4 +28,6 @@ goal_expansion_loop(T0, T) :-  % look for expandable terms inside T0
 
 % expand n/{2,3,4} macros
 user:goal_expansion(T0, T) :-
+    \+ (_,_) = T0,  % ignore conjunction of smaller goals
+    \+ (_;_) = T0,  % ignore disjunction of smaller goals
     thousands:goal_expansion_loop(T0, T).
