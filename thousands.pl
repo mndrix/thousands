@@ -19,12 +19,12 @@ goal_expansion_loop(T, T) :-
     var(T),
     !.
 goal_expansion_loop(T0, T) :-
+    expand_n(T0, T),
+    !.
+goal_expansion_loop(T0, T) :-  % look for expandable terms inside T0
     T0 =.. [Functor|Args0],
-    ( Args0=[] -> T = T0
-    ; Functor=n -> expand_n(T0, T)
-    ; maplist(goal_expansion_loop, Args0, Args),
-        T =.. [Functor|Args]
-    ).
+    maplist(goal_expansion_loop, Args0, Args),
+    T =.. [Functor|Args].
 
 % expand n/{2,3,4} macros
 user:goal_expansion(T0, T) :-
