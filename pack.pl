@@ -1,5 +1,5 @@
 name(thousands).
-version('0.0.1').
+version('0.0.2').
 title('Thousands separator for large integers').
 keywords([macro,integers]).
 author( 'Michael Hendricks', 'michael@ndrix.org' ).
