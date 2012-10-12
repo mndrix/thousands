@@ -7,4 +7,4 @@ pack:
 	cp pack.pl ${DIR}
 	mkdir ${DIR}/prolog
 	cp thousands.pl ${DIR}/prolog
-	tar czvf thousands-${TAG}.tgz ${DIR}
+	tar -czv -C /tmp -f thousands-${TAG}.tgz thousands-${TAG}
