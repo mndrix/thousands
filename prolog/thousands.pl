@@ -15,7 +15,7 @@ expand_n(n(Billions, Millions, Thousands, Ones), X) :-
     X is 1000000000*Billions + 1000000*Millions + 1000*Thousands + Ones.
 
 
-goal_expansion_loop(T, T) :-
+goal_expansion_loop(T, T) :-  % so `X=n(1,234)` works
     var(T),
     !.
 goal_expansion_loop(T0, T) :-
