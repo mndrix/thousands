@@ -31,3 +31,24 @@ user:goal_expansion(T0, T) :-
     \+ (_,_) = T0,  % ignore conjunction of smaller goals
     \+ (_;_) = T0,  % ignore disjunction of smaller goals
     thousands:goal_expansion_loop(T0, T).
+
+:- begin_tests(thousands).
+test(billions) :-
+    1123456789 =:= n(1,123,456,789).
+test(millions) :-
+    123456789 =:= n(123,456,789).
+test(thousands) :-
+    123456 =:= n(123,456).
+
+test(nested) :-
+    a(9876,b(1234),c(d(6542))) = a(n(9,876),b(n(1,234)),c(d(n(6,542)))).
+
+test(variable) :-
+    X = n(9,876,543),
+    9876543 =:= X.
+
+test(hundreds_not_expanded) :-
+    n(123) =.. [n, 123].
+test(variables_not_expanded) :-
+    n(A,123) =.. [n, A, 123].
+:- end_tests(thousands).
