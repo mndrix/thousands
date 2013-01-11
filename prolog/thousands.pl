@@ -1,5 +1,23 @@
-:- module(thousands, []).
+:- module(thousands, [n/2,n/3,n/4]).
 :- use_module(library(apply), [maplist/3]).
+
+% The following definitions for n/{2,3,4} are strictly for the
+% documentation system.  These macros are expanded away.
+
+%%	n(Thousands, Hundreds:integer).
+%
+%	Represents an integer less than 1 million.
+n(_,_).
+
+%%	n(Millions, Thousands, Hundreds:integer).
+%
+%	Represents an integer less than 1 billion.
+n(_,_,_).
+
+%% n(Billions, Millions,Thousands, Hundreds:integer).
+%
+%	Represents an integer less than 1 trillion.
+n(_,_,_,_).
 
 expand_n(n(Thousands, Ones), X) :-
     expand_n(n(0, 0, Thousands, Ones), X).
