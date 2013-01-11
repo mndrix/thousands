@@ -5,5 +5,5 @@ keywords([macro,integers]).
 author( 'Michael Hendricks', 'michael@ndrix.org' ).
 packager( 'Michael Hendricks', 'michael@ndrix.org' ).
 maintainer( 'Michael Hendricks', 'michael@ndrix.org' ).
-home('http://commondatastorage.googleapis.com/ndrix/thousands/index.html').
-download('http://commondatastorage.googleapis.com/ndrix/thousands-0.1.0.tgz').
+home('http://packs.ndrix.com/thousands/index.html').
+download('http://packs.ndrix.com/thousands/thousands-0.1.0.tgz').
