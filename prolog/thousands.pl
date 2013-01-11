@@ -19,9 +19,11 @@ goal_expansion_loop(T, T) :-  % so `X=n(1,234)` works
     var(T),
     !.
 goal_expansion_loop(T0, T) :-
-    expand_n(T0, T),
+    expand_n(T0, T),  % integer/1 constraints imply nonvar(T0)
     !.
 goal_expansion_loop(T0, T) :-  % look for expandable terms inside T0
+    nonvar(T0),
+    \+ expand_n(T0, _),
     T0 =.. [Functor|Args0],
     maplist(goal_expansion_loop, Args0, Args),
     T =.. [Functor|Args].
