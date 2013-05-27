@@ -4,6 +4,10 @@
 
 ---+ Synopsis
 
+This module is *deprecated* now that SWI-Prolog supports
+digit groups for large integers.  See the "Syntax Notes"
+section of the SWI-Prolog manual.
+
 ==
 :- use_module(library(thousands)).
 main :-
